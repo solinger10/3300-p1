@@ -47,7 +47,7 @@ RadarChart1.draw("#chart2", arr, mycfk);
 var svg = d3.select('#chart2')
 	.append('svg')
 	.attr("width", w)
-	.attr("height", h)
+	.attr("height", h);
 
 //Create the title for the legend
 var text = svg.append("text")
