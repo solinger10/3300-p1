@@ -44,8 +44,7 @@ RadarChart1.draw("#chart2", arr, mycfk);
 /////////// Initiate legend ////////////////
 ////////////////////////////////////////////
 
-var svg = d3.select('#body')
-	.selectAll('svg')
+var svg = d3.select('#chart2')
 	.append('svg')
 	.attr("width", w)
 	.attr("height", h)
