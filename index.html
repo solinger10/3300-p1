@@ -36,592 +36,593 @@ svg { margin: 10px; background-color: #fff; }
 
 <h2>Coffee and Quiz Performance</h2>
 
-<div id="plot"></div>
-<script>
-// source: http://stanford.edu/class/psych252/data/
-var data = [
-  {
-    "coffee":"1",
-    "perf":"53",
-    "accur":"0.449876732",
-    "numprob":"7"
-  },
-  {
-    "coffee":"1",
-    "perf":"9",
-    "accur":"0.499533863",
-    "numprob":"6"
-  },
-  {
-    "coffee":"1",
-    "perf":"31",
-    "accur":"0.498590267",
-    "numprob":"6"
-  },
-  {
-    "coffee":"1",
-    "perf":"38",
-    "accur":"0.454311863",
-    "numprob":"7"
-  },
-  {
-    "coffee":"2",
-    "perf":"40",
-    "accur":"0.421212023",
-    "numprob":"8"
-  },
-  {
-    "coffee":"1",
-    "perf":"40",
-    "accur":"0.626297796",
-    "numprob":"6"
-  },
-  {
-    "coffee":"1",
-    "perf":"9",
-    "accur":"0.350147152",
-    "numprob":"6"
-  },
-  {
-    "coffee":"1",
-    "perf":"37",
-    "accur":"0.398859894",
-    "numprob":"8"
-  },
-  {
-    "coffee":"2",
-    "perf":"62",
-    "accur":"0.352829266",
-    "numprob":"7"
-  },
-  {
-    "coffee":"1",
-    "perf":"23",
-    "accur":"0.730810428",
-    "numprob":"7"
-  },
-  {
-    "coffee":"1",
-    "perf":"31",
-    "accur":"0.67867527",
-    "numprob":"7"
-  },
-  {
-    "coffee":"1",
-    "perf":"35",
-    "accur":"0.632078695",
-    "numprob":"6"
-  },
-  {
-    "coffee":"1",
-    "perf":"48",
-    "accur":"0.627358925",
-    "numprob":"6"
-  },
-  {
-    "coffee":"2",
-    "perf":"48",
-    "accur":"0.556492352",
-    "numprob":"8"
-  },
-  {
-    "coffee":"2",
-    "perf":"51",
-    "accur":"0.478877912",
-    "numprob":"10"
-  },
-  {
-    "coffee":"2",
-    "perf":"29",
-    "accur":"0.404709792",
-    "numprob":"9"
-  },
-  {
-    "coffee":"1",
-    "perf":"30",
-    "accur":"0.478003509",
-    "numprob":"7"
-  },
-  {
-    "coffee":"1",
-    "perf":"38",
-    "accur":"0.418093312",
-    "numprob":"7"
-  },
-  {
-    "coffee":"1",
-    "perf":"55",
-    "accur":"0.641135383",
-    "numprob":"7"
-  },
-  {
-    "coffee":"1",
-    "perf":"24",
-    "accur":"0.480038723",
-    "numprob":"7"
-  },
-  {
-    "coffee":"1",
-    "perf":"58",
-    "accur":"0.47510028",
-    "numprob":"8"
-  },
-  {
-    "coffee":"1",
-    "perf":"78",
-    "accur":"0.526124689",
-    "numprob":"8"
-  },
-  {
-    "coffee":"1",
-    "perf":"5",
-    "accur":"0.334742105",
-    "numprob":"6"
-  },
-  {
-    "coffee":"2",
-    "perf":"38",
-    "accur":"0.55808177",
-    "numprob":"8"
-  },
-  {
-    "coffee":"1",
-    "perf":"19",
-    "accur":"0.670659649",
-    "numprob":"6"
-  },
-  {
-    "coffee":"1",
-    "perf":"40",
-    "accur":"0.517117275",
-    "numprob":"7"
-  },
-  {
-    "coffee":"2",
-    "perf":"35",
-    "accur":"0.383881235",
-    "numprob":"9"
-  },
-  {
-    "coffee":"2",
-    "perf":"51",
-    "accur":"0.577231801",
-    "numprob":"8"
-  },
-  {
-    "coffee":"2",
-    "perf":"68",
-    "accur":"0.615411282",
-    "numprob":"9"
-  },
-  {
-    "coffee":"3",
-    "perf":"73",
-    "accur":"0.540755269",
-    "numprob":"9"
-  },
-  {
-    "coffee":"3",
-    "perf":"63",
-    "accur":"0.748692417",
-    "numprob":"9"
-  },
-  {
-    "coffee":"3",
-    "perf":"58",
-    "accur":"0.523035862",
-    "numprob":"9"
-  },
-  {
-    "coffee":"3",
-    "perf":"44",
-    "accur":"0.528826964",
-    "numprob":"9"
-  },
-  {
-    "coffee":"3",
-    "perf":"45",
-    "accur":"0.559104532",
-    "numprob":"9"
-  },
-  {
-    "coffee":"2",
-    "perf":"42",
-    "accur":"0.677177095",
-    "numprob":"7"
-  },
-  {
-    "coffee":"2",
-    "perf":"20",
-    "accur":"0.240237737",
-    "numprob":"9"
-  },
-  {
-    "coffee":"2",
-    "perf":"13",
-    "accur":"0.603682792",
-    "numprob":"7"
-  },
-  {
-    "coffee":"2",
-    "perf":"64",
-    "accur":"0.346096516",
-    "numprob":"9"
-  },
-  {
-    "coffee":"2",
-    "perf":"27",
-    "accur":"0.617997658",
-    "numprob":"9"
-  },
-  {
-    "coffee":"3",
-    "perf":"56",
-    "accur":"0.521300183",
-    "numprob":"10"
-  },
-  {
-    "coffee":"2",
-    "perf":"76",
-    "accur":"0.545202437",
-    "numprob":"7"
-  },
-  {
-    "coffee":"2",
-    "perf":"33",
-    "accur":"0.406970328",
-    "numprob":"9"
-  },
-  {
-    "coffee":"3",
-    "perf":"58",
-    "accur":"0.500717901",
-    "numprob":"9"
-  },
-  {
-    "coffee":"3",
-    "perf":"31",
-    "accur":"0.514194928",
-    "numprob":"8"
-  },
-  {
-    "coffee":"3",
-    "perf":"34",
-    "accur":"0.426645821",
-    "numprob":"8"
-  },
-  {
-    "coffee":"2",
-    "perf":"42",
-    "accur":"0.39534514",
-    "numprob":"8"
-  },
-  {
-    "coffee":"2",
-    "perf":"48",
-    "accur":"0.633763814",
-    "numprob":"7"
-  },
-  {
-    "coffee":"3",
-    "perf":"77",
-    "accur":"0.593512684",
-    "numprob":"9"
-  },
-  {
-    "coffee":"3",
-    "perf":"89",
-    "accur":"0.684199989",
-    "numprob":"10"
-  },
-  {
-    "coffee":"3",
-    "perf":"26",
-    "accur":"0.43054893",
-    "numprob":"10"
-  },
-  {
-    "coffee":"3",
-    "perf":"51",
-    "accur":"0.451110807",
-    "numprob":"9"
-  },
-  {
-    "coffee":"3",
-    "perf":"48",
-    "accur":"0.597240925",
-    "numprob":"8"
-  },
-  {
-    "coffee":"3",
-    "perf":"64",
-    "accur":"0.505416542",
-    "numprob":"10"
-  },
-  {
-    "coffee":"2",
-    "perf":"34",
-    "accur":"0.461815158",
-    "numprob":"8"
-  },
-  {
-    "coffee":"3",
-    "perf":"39",
-    "accur":"0.423497874",
-    "numprob":"8"
-  },
-  {
-    "coffee":"3",
-    "perf":"53",
-    "accur":"0.569814485",
-    "numprob":"8"
-  },
-  {
-    "coffee":"2",
-    "perf":"20",
-    "accur":"0.410549104",
-    "numprob":"9"
-  },
-  {
-    "coffee":"3",
-    "perf":"18",
-    "accur":"0.38105104",
-    "numprob":"8"
-  },
-  {
-    "coffee":"3",
-    "perf":"38",
-    "accur":"0.519516632",
-    "numprob":"9"
-  },
-  {
-    "coffee":"3",
-    "perf":"35",
-    "accur":"0.456945455",
-    "numprob":"8"
+<div id="plot1">
+  <script>
+  // source: http://stanford.edu/class/psych252/data/
+  var data = [
+    {
+      "coffee":"1",
+      "perf":"53",
+      "accur":"0.449876732",
+      "numprob":"7"
+    },
+    {
+      "coffee":"1",
+      "perf":"9",
+      "accur":"0.499533863",
+      "numprob":"6"
+    },
+    {
+      "coffee":"1",
+      "perf":"31",
+      "accur":"0.498590267",
+      "numprob":"6"
+    },
+    {
+      "coffee":"1",
+      "perf":"38",
+      "accur":"0.454311863",
+      "numprob":"7"
+    },
+    {
+      "coffee":"2",
+      "perf":"40",
+      "accur":"0.421212023",
+      "numprob":"8"
+    },
+    {
+      "coffee":"1",
+      "perf":"40",
+      "accur":"0.626297796",
+      "numprob":"6"
+    },
+    {
+      "coffee":"1",
+      "perf":"9",
+      "accur":"0.350147152",
+      "numprob":"6"
+    },
+    {
+      "coffee":"1",
+      "perf":"37",
+      "accur":"0.398859894",
+      "numprob":"8"
+    },
+    {
+      "coffee":"2",
+      "perf":"62",
+      "accur":"0.352829266",
+      "numprob":"7"
+    },
+    {
+      "coffee":"1",
+      "perf":"23",
+      "accur":"0.730810428",
+      "numprob":"7"
+    },
+    {
+      "coffee":"1",
+      "perf":"31",
+      "accur":"0.67867527",
+      "numprob":"7"
+    },
+    {
+      "coffee":"1",
+      "perf":"35",
+      "accur":"0.632078695",
+      "numprob":"6"
+    },
+    {
+      "coffee":"1",
+      "perf":"48",
+      "accur":"0.627358925",
+      "numprob":"6"
+    },
+    {
+      "coffee":"2",
+      "perf":"48",
+      "accur":"0.556492352",
+      "numprob":"8"
+    },
+    {
+      "coffee":"2",
+      "perf":"51",
+      "accur":"0.478877912",
+      "numprob":"10"
+    },
+    {
+      "coffee":"2",
+      "perf":"29",
+      "accur":"0.404709792",
+      "numprob":"9"
+    },
+    {
+      "coffee":"1",
+      "perf":"30",
+      "accur":"0.478003509",
+      "numprob":"7"
+    },
+    {
+      "coffee":"1",
+      "perf":"38",
+      "accur":"0.418093312",
+      "numprob":"7"
+    },
+    {
+      "coffee":"1",
+      "perf":"55",
+      "accur":"0.641135383",
+      "numprob":"7"
+    },
+    {
+      "coffee":"1",
+      "perf":"24",
+      "accur":"0.480038723",
+      "numprob":"7"
+    },
+    {
+      "coffee":"1",
+      "perf":"58",
+      "accur":"0.47510028",
+      "numprob":"8"
+    },
+    {
+      "coffee":"1",
+      "perf":"78",
+      "accur":"0.526124689",
+      "numprob":"8"
+    },
+    {
+      "coffee":"1",
+      "perf":"5",
+      "accur":"0.334742105",
+      "numprob":"6"
+    },
+    {
+      "coffee":"2",
+      "perf":"38",
+      "accur":"0.55808177",
+      "numprob":"8"
+    },
+    {
+      "coffee":"1",
+      "perf":"19",
+      "accur":"0.670659649",
+      "numprob":"6"
+    },
+    {
+      "coffee":"1",
+      "perf":"40",
+      "accur":"0.517117275",
+      "numprob":"7"
+    },
+    {
+      "coffee":"2",
+      "perf":"35",
+      "accur":"0.383881235",
+      "numprob":"9"
+    },
+    {
+      "coffee":"2",
+      "perf":"51",
+      "accur":"0.577231801",
+      "numprob":"8"
+    },
+    {
+      "coffee":"2",
+      "perf":"68",
+      "accur":"0.615411282",
+      "numprob":"9"
+    },
+    {
+      "coffee":"3",
+      "perf":"73",
+      "accur":"0.540755269",
+      "numprob":"9"
+    },
+    {
+      "coffee":"3",
+      "perf":"63",
+      "accur":"0.748692417",
+      "numprob":"9"
+    },
+    {
+      "coffee":"3",
+      "perf":"58",
+      "accur":"0.523035862",
+      "numprob":"9"
+    },
+    {
+      "coffee":"3",
+      "perf":"44",
+      "accur":"0.528826964",
+      "numprob":"9"
+    },
+    {
+      "coffee":"3",
+      "perf":"45",
+      "accur":"0.559104532",
+      "numprob":"9"
+    },
+    {
+      "coffee":"2",
+      "perf":"42",
+      "accur":"0.677177095",
+      "numprob":"7"
+    },
+    {
+      "coffee":"2",
+      "perf":"20",
+      "accur":"0.240237737",
+      "numprob":"9"
+    },
+    {
+      "coffee":"2",
+      "perf":"13",
+      "accur":"0.603682792",
+      "numprob":"7"
+    },
+    {
+      "coffee":"2",
+      "perf":"64",
+      "accur":"0.346096516",
+      "numprob":"9"
+    },
+    {
+      "coffee":"2",
+      "perf":"27",
+      "accur":"0.617997658",
+      "numprob":"9"
+    },
+    {
+      "coffee":"3",
+      "perf":"56",
+      "accur":"0.521300183",
+      "numprob":"10"
+    },
+    {
+      "coffee":"2",
+      "perf":"76",
+      "accur":"0.545202437",
+      "numprob":"7"
+    },
+    {
+      "coffee":"2",
+      "perf":"33",
+      "accur":"0.406970328",
+      "numprob":"9"
+    },
+    {
+      "coffee":"3",
+      "perf":"58",
+      "accur":"0.500717901",
+      "numprob":"9"
+    },
+    {
+      "coffee":"3",
+      "perf":"31",
+      "accur":"0.514194928",
+      "numprob":"8"
+    },
+    {
+      "coffee":"3",
+      "perf":"34",
+      "accur":"0.426645821",
+      "numprob":"8"
+    },
+    {
+      "coffee":"2",
+      "perf":"42",
+      "accur":"0.39534514",
+      "numprob":"8"
+    },
+    {
+      "coffee":"2",
+      "perf":"48",
+      "accur":"0.633763814",
+      "numprob":"7"
+    },
+    {
+      "coffee":"3",
+      "perf":"77",
+      "accur":"0.593512684",
+      "numprob":"9"
+    },
+    {
+      "coffee":"3",
+      "perf":"89",
+      "accur":"0.684199989",
+      "numprob":"10"
+    },
+    {
+      "coffee":"3",
+      "perf":"26",
+      "accur":"0.43054893",
+      "numprob":"10"
+    },
+    {
+      "coffee":"3",
+      "perf":"51",
+      "accur":"0.451110807",
+      "numprob":"9"
+    },
+    {
+      "coffee":"3",
+      "perf":"48",
+      "accur":"0.597240925",
+      "numprob":"8"
+    },
+    {
+      "coffee":"3",
+      "perf":"64",
+      "accur":"0.505416542",
+      "numprob":"10"
+    },
+    {
+      "coffee":"2",
+      "perf":"34",
+      "accur":"0.461815158",
+      "numprob":"8"
+    },
+    {
+      "coffee":"3",
+      "perf":"39",
+      "accur":"0.423497874",
+      "numprob":"8"
+    },
+    {
+      "coffee":"3",
+      "perf":"53",
+      "accur":"0.569814485",
+      "numprob":"8"
+    },
+    {
+      "coffee":"2",
+      "perf":"20",
+      "accur":"0.410549104",
+      "numprob":"9"
+    },
+    {
+      "coffee":"3",
+      "perf":"18",
+      "accur":"0.38105104",
+      "numprob":"8"
+    },
+    {
+      "coffee":"3",
+      "perf":"38",
+      "accur":"0.519516632",
+      "numprob":"9"
+    },
+    {
+      "coffee":"3",
+      "perf":"35",
+      "accur":"0.456945455",
+      "numprob":"8"
+    }
+  ];
+
+  var height = 500;
+  var width = 500;
+  var padding = 60;
+  var legendWidth = 225;
+
+  var svg = d3.select("#plot1").append("svg")
+  .attr("height", height).attr("width", width * 2 + legendWidth);
+
+  var xScale = d3.scale.linear().domain([5, 10]).range([padding, width - padding]);
+  var yScale = d3.scale.linear().domain([0, 100]).range([height - padding, padding]);
+
+  var xAxis = d3.svg.axis().scale(xScale).orient("bottom").ticks(5);
+  var yAxis = d3.svg.axis().scale(yScale).orient("left");
+
+  svg.append("g").attr("transform", "translate(0," + (height - padding) + ")").attr("class", "axis").call(xAxis);
+  svg.append("g").attr("transform", "translate(" + padding + ",0)").attr("class", "axis").call(yAxis);
+
+  var colors = ['#116611', '#4F628E', '#552500'];
+  var sums = [0, 0, 0];
+  var r = 10;
+  var opacity = 0.7;
+  for(var i in data) {
+    svg.append("circle")
+      .attr("cx", xScale(data[i].numprob))
+      .attr("cy", yScale(data[i].perf))
+      .attr("r", r)
+      .style("opacity", opacity)
+      .style("fill", colors[data[i].coffee - 1]);
+    sums[data[i].coffee - 1] += parseFloat(data[i].perf);
   }
-];
 
-var height = 500;
-var width = 500;
-var padding = 60;
-var legendWidth = 225;
+  // Average Lines
+  var strokeWidth = 3;
+  svg.append("line")
+    .attr("x1", padding)
+    .attr("y1", yScale(sums[0] / 20))
+    .attr("x2", width - padding + r)
+    .attr("y2", yScale(sums[0] / 20))
+    .attr("stroke", colors[0])
+    .attr('stroke-width', strokeWidth)
+    .style("opacity", opacity);
 
-var svg = d3.select("#plot").append("svg")
-.attr("height", height).attr("width", width * 2 + legendWidth);
+  svg.append("line")
+    .attr("x1", padding)
+    .attr("y1", yScale(sums[1] / 20))
+    .attr("x2", width - padding + r)
+    .attr("y2", yScale(sums[1] / 20))
+    .attr("stroke", colors[1])
+    .attr('stroke-width', strokeWidth)
+    .style("opacity", opacity);
 
-var xScale = d3.scale.linear().domain([5, 10]).range([padding, width - padding]);
-var yScale = d3.scale.linear().domain([0, 100]).range([height - padding, padding]);
+  svg.append("line")
+    .attr("x1", padding)
+    .attr("y1", yScale(sums[2] / 20))
+    .attr("x2", width - padding + r)
+    .attr("y2", yScale(sums[2] / 20))
+    .attr("stroke", colors[2])
+    .attr('stroke-width', strokeWidth)
+    .style("opacity", opacity);
 
-var xAxis = d3.svg.axis().scale(xScale).orient("bottom").ticks(5);
-var yAxis = d3.svg.axis().scale(yScale).orient("left");
+  // Axis labels
+  svg.append('text').attr('x', width / 2)
+    .attr('y', yScale(0) + padding * 0.65)
+    .text('Number of Questions Attempted')
+    .attr('text-anchor', 'middle')
+    .attr('dominant-baseline', 'middle');
 
-svg.append("g").attr("transform", "translate(0," + (height - padding) + ")").attr("class", "axis").call(xAxis);
-svg.append("g").attr("transform", "translate(" + padding + ",0)").attr("class", "axis").call(yAxis);
+  svg.append("text").attr("x", -1 * width / 2)
+      .attr("y", padding * 0.35)
+      .text("Final Quiz Score")
+      .attr("text-anchor", "middle")
+      .attr("transform", "rotate(-90)");
 
-var colors = ['#116611', '#4F628E', '#552500'];
-var sums = [0, 0, 0];
-var r = 10;
-var opacity = 0.7;
-for(var i in data) {
+  //var svg = d3.select("#plot").append("svg")
+  //.attr("height", height).attr("width", width + legendWidth);
+
+  var xScale = d3.scale.linear().domain([5, 10]).range([width + padding, width + width - padding]);
+  var yScale = d3.scale.linear().domain([0, 1]).range([height - padding, padding]);
+
+  var xAxis = d3.svg.axis().scale(xScale).orient("bottom").ticks(5);
+  var yAxis = d3.svg.axis().scale(yScale).orient("left");
+
+  svg.append("g").attr("transform", "translate(0," + (height - padding) + ")").attr("class", "axis").call(xAxis);
+  svg.append("g").attr("transform", "translate(" + (width + padding) + ",0)").attr("class", "axis").call(yAxis);
+
+  // Circle data points
+  var colors = ['#116611', '#4F628E', '#552500'];
+  var sums = [0, 0, 0];
+  var r = 10;
+  var opacity = 0.7;
+  for(var i in data) {
+    svg.append("circle")
+      .attr("cx", xScale(data[i].numprob))
+      .attr("cy", yScale(data[i].accur))
+      .attr("r", r)
+      .style("opacity", opacity)
+      .style("fill", colors[data[i].coffee - 1]);
+    sums[data[i].coffee - 1] += parseFloat(data[i].accur);
+  }
+
+  // Average Lines
+  var strokeWidth = 3;
+  svg.append("line")
+    .attr("x1", width + padding)
+    .attr("y1", yScale(sums[0] / 20))
+    .attr("x2", 2 * width - padding + r)
+    .attr("y2", yScale(sums[0] / 20))
+    .attr("stroke", colors[0])
+    .attr('stroke-width', strokeWidth)
+    .style("opacity", opacity);
+
+  svg.append("line")
+    .attr("x1", width + padding)
+    .attr("y1", yScale(sums[1] / 20))
+    .attr("x2", 2 * width - padding + r)
+    .attr("y2", yScale(sums[1] / 20))
+    .attr("stroke", colors[1])
+    .attr('stroke-width', strokeWidth)
+    .style("opacity", opacity);
+
+  svg.append("line")
+    .attr("x1", width + padding)
+    .attr("y1", yScale(sums[2] / 20))
+    .attr("x2", 2 * width - padding + r)
+    .attr("y2", yScale(sums[2] / 20))
+    .attr("stroke", colors[2])
+    .attr('stroke-width', strokeWidth)
+    .style("opacity", opacity);
+
+  // Right-side legend elements
+  var xPos = width + width  + 10;
+  var yPos = 150;
+  var yStep = 50;
+
   svg.append("circle")
-    .attr("cx", xScale(data[i].numprob))
-    .attr("cy", yScale(data[i].perf))
+    .attr("cx", xPos + r)
+    .attr("cy", yPos)
     .attr("r", r)
     .style("opacity", opacity)
-    .style("fill", colors[data[i].coffee - 1]);
-  sums[data[i].coffee - 1] += parseFloat(data[i].perf);
-}
+    .style("fill", colors[0]);  
 
-// Average Lines
-var strokeWidth = 3;
-svg.append("line")
-  .attr("x1", padding)
-  .attr("y1", yScale(sums[0] / 20))
-  .attr("x2", width - padding + r)
-  .attr("y2", yScale(sums[0] / 20))
-  .attr("stroke", colors[0])
-  .attr('stroke-width', strokeWidth)
-  .style("opacity", opacity);
+  svg.append('text').attr('x', xPos + 2 * r + 10)
+    .attr('y', yPos)
+    .text('Student (0 cups of coffee)')
+    .attr('dominant-baseline', 'middle')
+    .attr('fill', colors[0]);
 
-svg.append("line")
-  .attr("x1", padding)
-  .attr("y1", yScale(sums[1] / 20))
-  .attr("x2", width - padding + r)
-  .attr("y2", yScale(sums[1] / 20))
-  .attr("stroke", colors[1])
-  .attr('stroke-width', strokeWidth)
-  .style("opacity", opacity);
-
-svg.append("line")
-  .attr("x1", padding)
-  .attr("y1", yScale(sums[2] / 20))
-  .attr("x2", width - padding + r)
-  .attr("y2", yScale(sums[2] / 20))
-  .attr("stroke", colors[2])
-  .attr('stroke-width', strokeWidth)
-  .style("opacity", opacity);
-
-// Axis labels
-svg.append('text').attr('x', width / 2)
-  .attr('y', yScale(0) + padding * 0.65)
-  .text('Number of Questions Attempted')
-  .attr('text-anchor', 'middle')
-  .attr('dominant-baseline', 'middle');
-
-svg.append("text").attr("x", -1 * width / 2)
-    .attr("y", padding * 0.35)
-    .text("Final Quiz Score")
-    .attr("text-anchor", "middle")
-    .attr("transform", "rotate(-90)");
-
-//var svg = d3.select("#plot").append("svg")
-//.attr("height", height).attr("width", width + legendWidth);
-
-var xScale = d3.scale.linear().domain([5, 10]).range([width + padding, width + width - padding]);
-var yScale = d3.scale.linear().domain([0, 1]).range([height - padding, padding]);
-
-var xAxis = d3.svg.axis().scale(xScale).orient("bottom").ticks(5);
-var yAxis = d3.svg.axis().scale(yScale).orient("left");
-
-svg.append("g").attr("transform", "translate(0," + (height - padding) + ")").attr("class", "axis").call(xAxis);
-svg.append("g").attr("transform", "translate(" + (width + padding) + ",0)").attr("class", "axis").call(yAxis);
-
-// Circle data points
-var colors = ['#116611', '#4F628E', '#552500'];
-var sums = [0, 0, 0];
-var r = 10;
-var opacity = 0.7;
-for(var i in data) {
+  yPos += yStep;
   svg.append("circle")
-    .attr("cx", xScale(data[i].numprob))
-    .attr("cy", yScale(data[i].accur))
+    .attr("cx", xPos + r)
+    .attr("cy", yPos)
     .attr("r", r)
     .style("opacity", opacity)
-    .style("fill", colors[data[i].coffee - 1]);
-  sums[data[i].coffee - 1] += parseFloat(data[i].accur);
-}
+    .style("fill", colors[1]);  
 
-// Average Lines
-var strokeWidth = 3;
-svg.append("line")
-  .attr("x1", width + padding)
-  .attr("y1", yScale(sums[0] / 20))
-  .attr("x2", 2 * width - padding + r)
-  .attr("y2", yScale(sums[0] / 20))
-  .attr("stroke", colors[0])
-  .attr('stroke-width', strokeWidth)
-  .style("opacity", opacity);
+  svg.append('text').attr('x', xPos + 2 * r + 10)
+    .attr('y', yPos)
+    .text('Student (2 cups of coffee)')
+    .attr('dominant-baseline', 'middle')
+    .attr('fill', colors[1]);
 
-svg.append("line")
-  .attr("x1", width + padding)
-  .attr("y1", yScale(sums[1] / 20))
-  .attr("x2", 2 * width - padding + r)
-  .attr("y2", yScale(sums[1] / 20))
-  .attr("stroke", colors[1])
-  .attr('stroke-width', strokeWidth)
-  .style("opacity", opacity);
+  yPos += yStep;
+  svg.append("circle")
+    .attr("cx", xPos + r)
+    .attr("cy", yPos)
+    .attr("r", r)
+    .style("opacity", opacity)
+    .style("fill", colors[2]);  
 
-svg.append("line")
-  .attr("x1", width + padding)
-  .attr("y1", yScale(sums[2] / 20))
-  .attr("x2", 2 * width - padding + r)
-  .attr("y2", yScale(sums[2] / 20))
-  .attr("stroke", colors[2])
-  .attr('stroke-width', strokeWidth)
-  .style("opacity", opacity);
+  svg.append('text').attr('x', xPos + 2 * r + 10)
+    .attr('y', yPos)
+    .text('Student (4 cups of coffee)')
+    .attr('dominant-baseline', 'middle')
+    .attr('fill', colors[2]);
 
-// Right-side legend elements
-var xPos = width + width  + 10;
-var yPos = 150;
-var yStep = 50;
+  yPos += yStep;
+  svg.append("line")
+    .attr("x1", xPos)
+    .attr("y1", yPos - 8)
+    .attr("x2", xPos + 2 * r)
+    .attr("y2", yPos - 8)
+    .attr("stroke", colors[0])
+    .attr('stroke-width', strokeWidth)
+    .style("opacity", opacity);
+  svg.append("line")
+    .attr("x1", xPos)
+    .attr("y1", yPos)
+    .attr("x2", xPos + 2 * r)
+    .attr("y2", yPos)
+    .attr("stroke", colors[1])
+    .attr('stroke-width', strokeWidth)
+    .style("opacity", opacity);
+  svg.append("line")
+    .attr("x1", xPos)
+    .attr("y1", yPos + 8)
+    .attr("x2", xPos + 2 * r)
+    .attr("y2", yPos + 8)
+    .attr("stroke", colors[2])
+    .attr('stroke-width', strokeWidth)
+    .style("opacity", opacity);
 
-svg.append("circle")
-  .attr("cx", xPos + r)
-  .attr("cy", yPos)
-  .attr("r", r)
-  .style("opacity", opacity)
-  .style("fill", colors[0]);  
+  svg.append('text').attr('x', xPos + 2 * r + 10)
+    .attr('y', yPos)
+    .text('Average lines')
+    .attr('dominant-baseline', 'middle');
 
-svg.append('text').attr('x', xPos + 2 * r + 10)
-  .attr('y', yPos)
-  .text('Student (0 cups of coffee)')
-  .attr('dominant-baseline', 'middle')
-  .attr('fill', colors[0]);
+  // Axis labels
+  svg.append('text').attr('x', width / 2 + width )
+    .attr('y', yScale(0) + padding * 0.65)
+    .text('Number of Questions Attempted')
+    .attr('text-anchor', 'middle')
+    .attr('dominant-baseline', 'middle');
 
-yPos += yStep;
-svg.append("circle")
-  .attr("cx", xPos + r)
-  .attr("cy", yPos)
-  .attr("r", r)
-  .style("opacity", opacity)
-  .style("fill", colors[1]);  
+  svg.append("text").attr("x", -1 * width / 2)
+      .attr("y", padding * 0.35 + width )
+      .text("Accuracy")
+      .attr("text-anchor", "middle")
+      .attr("transform", "rotate(-90)");
 
-svg.append('text').attr('x', xPos + 2 * r + 10)
-  .attr('y', yPos)
-  .text('Student (2 cups of coffee)')
-  .attr('dominant-baseline', 'middle')
-  .attr('fill', colors[1]);
-
-yPos += yStep;
-svg.append("circle")
-  .attr("cx", xPos + r)
-  .attr("cy", yPos)
-  .attr("r", r)
-  .style("opacity", opacity)
-  .style("fill", colors[2]);  
-
-svg.append('text').attr('x', xPos + 2 * r + 10)
-  .attr('y', yPos)
-  .text('Student (4 cups of coffee)')
-  .attr('dominant-baseline', 'middle')
-  .attr('fill', colors[2]);
-
-yPos += yStep;
-svg.append("line")
-  .attr("x1", xPos)
-  .attr("y1", yPos - 8)
-  .attr("x2", xPos + 2 * r)
-  .attr("y2", yPos - 8)
-  .attr("stroke", colors[0])
-  .attr('stroke-width', strokeWidth)
-  .style("opacity", opacity);
-svg.append("line")
-  .attr("x1", xPos)
-  .attr("y1", yPos)
-  .attr("x2", xPos + 2 * r)
-  .attr("y2", yPos)
-  .attr("stroke", colors[1])
-  .attr('stroke-width', strokeWidth)
-  .style("opacity", opacity);
-svg.append("line")
-  .attr("x1", xPos)
-  .attr("y1", yPos + 8)
-  .attr("x2", xPos + 2 * r)
-  .attr("y2", yPos + 8)
-  .attr("stroke", colors[2])
-  .attr('stroke-width', strokeWidth)
-  .style("opacity", opacity);
-
-svg.append('text').attr('x', xPos + 2 * r + 10)
-  .attr('y', yPos)
-  .text('Average lines')
-  .attr('dominant-baseline', 'middle');
-
-// Axis labels
-svg.append('text').attr('x', width / 2 + width )
-  .attr('y', yScale(0) + padding * 0.65)
-  .text('Number of Questions Attempted')
-  .attr('text-anchor', 'middle')
-  .attr('dominant-baseline', 'middle');
-
-svg.append("text").attr("x", -1 * width / 2)
-    .attr("y", padding * 0.35 + width )
-    .text("Accuracy")
-    .attr("text-anchor", "middle")
-    .attr("transform", "rotate(-90)");
-
-</script>
+  </script>
+</div>
 
 <div id="chart2">
       <p>Relationship among cups of coffee consumed per day, GPA and classes</p>
