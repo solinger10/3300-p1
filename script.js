@@ -3,7 +3,7 @@
 //chart2
 d3.csv("data1.csv", function(err, data) {
 var w = 750,
-	h = 450;
+	h = 250;
 
 var colorscale = d3.scale.category10();
 
@@ -28,13 +28,13 @@ var LegendOptions = ['Freshman','Sophomore','Junior','Senior'];
 //Data
 
 //Options for the Radar chart, other than default
-var mycfg = {
+/* var mycfg = {
   w: w,
   h: h,
   maxValue: 4.3,
   levels: 4,
-  ExtraWidthX: 300
-} 
+  ExtraWidthX: 100
+} */
 
 //Call function to draw the Radar chart
 //Will expect that data is in %'s
@@ -44,10 +44,7 @@ RadarChart1.draw("#chart2", arr, mycfk);
 /////////// Initiate legend ////////////////
 ////////////////////////////////////////////
 
-var svg = d3.select('#chart2')
-	.append('svg')
-	.attr("width", w)
-	.attr("height", h);
+var svg = d3.select('#chart2 svg');
 
 //Create the title for the legend
 var text = svg.append("text")
@@ -56,8 +53,8 @@ var text = svg.append("text")
 	.attr("x", w - 70)
 	.attr("y", 10)
 	.attr("font-size", "12px")
-	.attr("fill", "#404040")
-	.text("What % of owners use a specific service in a week");
+	.attr("fill", "#404040");
+	
 		
 //Initiate Legend	
 var legend = svg.append("g")
@@ -87,12 +84,17 @@ var legend = svg.append("g")
 	  .attr("font-size", "11px")
 	  .attr("fill", "#737373")
 	  .text(function(d) { return d; })
-	  ;	
- }) 
-var mycfk = {
+	  ;
+
+
+
+	  var mycfk = {
   w: w,
   h: h,
-  maxValue: 10,
-  levels: 5,
+  maxValue: 9,
+  levels: 9,
   //ExtraWidthX: 300
 }
+
+ }) 
+
