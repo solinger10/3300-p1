@@ -6,10 +6,13 @@
 <script src="http://d3js.org/d3.v3.min.js"></script>
 <script src="RadarChart.js"></script>
 <style>
-body { font-family: "Open Sans"; font-size: 14; }
+body { font-family: "Open Sans"; font-size: 14; text-align: center;}
 svg { margin: 10px; background-color: #fff; }
 .axis path { fill: none; stroke: black;}
 .axis line { stroke: black; }
+#plot1 p {
+  font-size: 18px;
+}
 #chart2 {
       position: relative;
       top: 50px;
@@ -37,6 +40,9 @@ svg { margin: 10px; background-color: #fff; }
 <h2>Coffee and Quiz Performance</h2>
 
 <div id="plot1">
+  <p>
+    3 groups of 20 students drank either 0, 2, or 4 cups of coffee and then took a 10-problem statistics quiz.
+  </p>
   <script>
   // source: http://stanford.edu/class/psych252/data/
   var data = [
@@ -411,7 +417,7 @@ svg { margin: 10px; background-color: #fff; }
   .attr("height", height).attr("width", width * 2 + legendWidth);
 
   var xScale = d3.scale.linear().domain([5, 10]).range([padding, width - padding]);
-  var yScale = d3.scale.linear().domain([0, 100]).range([height - padding, padding]);
+  var yScale = d3.scale.linear().domain([0, 90]).range([height - padding, 10]);
 
   var xAxis = d3.svg.axis().scale(xScale).orient("bottom").ticks(5);
   var yAxis = d3.svg.axis().scale(yScale).orient("left");
@@ -479,10 +485,10 @@ svg { margin: 10px; background-color: #fff; }
   //.attr("height", height).attr("width", width + legendWidth);
 
   var xScale = d3.scale.linear().domain([5, 10]).range([width + padding, width + width - padding]);
-  var yScale = d3.scale.linear().domain([0, 1]).range([height - padding, padding]);
+  var yScale = d3.scale.linear().domain([0.1, 0.9]).range([height - padding, 10]);
 
   var xAxis = d3.svg.axis().scale(xScale).orient("bottom").ticks(5);
-  var yAxis = d3.svg.axis().scale(yScale).orient("left");
+  var yAxis = d3.svg.axis().scale(yScale).orient("left").ticks(10);
 
   svg.append("g").attr("transform", "translate(0," + (height - padding) + ")").attr("class", "axis").call(xAxis);
   svg.append("g").attr("transform", "translate(" + (width + padding) + ",0)").attr("class", "axis").call(yAxis);
@@ -610,7 +616,7 @@ svg { margin: 10px; background-color: #fff; }
 
   // Axis labels
   svg.append('text').attr('x', width / 2 + width )
-    .attr('y', yScale(0) + padding * 0.65)
+    .attr('y', yScale(0.1) + padding * 0.65)
     .text('Number of Questions Attempted')
     .attr('text-anchor', 'middle')
     .attr('dominant-baseline', 'middle');
