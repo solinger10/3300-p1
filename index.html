@@ -73,8 +73,8 @@ p {
     </header>
 </div>
 <div id="body">
-  <h2>Responsiveness & Caffeine Consumption</h2>
-  <p>The average response time to a stimulus for a caffeinated and non-caffeinated subject. Each day represents a consecutive day in which the subjects were deprived of sleep.</p>
+  <h2>Attention & Caffeine Consumption</h2>
+  <p>The average number of attention lapses in response to a stimulus for a caffeinated and non-caffeinated subject. Each day represents a consecutive day in which the subjects were deprived of sleep.</p>
 <div id="placebo_graph">
   <script>
 
@@ -109,13 +109,14 @@ p {
   var w = 17;
   function makeMug(xcoor, ycoor, color){
     svg.append("rect")
-    .attr("height", h+1)
-    .attr("width", w)
-    .style("fill", color)
-    .style("border", "black")
-    .style("border", "2px black")
-    .attr("x", xcoor)
-    .attr("y", ycoor);
+      .attr("height", h+1)
+      .attr("width", w)
+      .style("fill", color)
+      .style("border", "black")
+      .style("border", "2px black")
+      .style("opacity", 0.7)
+      .attr("x", xcoor)
+      .attr("y", ycoor);
 
     var handle = d3.svg.arc()
       .innerRadius(4)
@@ -129,6 +130,7 @@ p {
       .append("path")
       .attr("d", handle)
       .style("fill", color)
+      .style("opacity", 0.7)
       .attr("transform", "translate(" + hxcoor + "," + hycoor + ")");
   }
 
@@ -138,7 +140,7 @@ p {
     var remaining = 12
     while(val > 2){
       var yc = yScaleDays(i);
-      makeMug(xc, yc, "#996633");
+      makeMug(xc, yc, "#552500");
       xc = xc + 30;
       val = val - 2 ;
       remaining--;
@@ -152,7 +154,8 @@ p {
     var partW = partialScale(val);
     svg.append("rect").attr("x", partxc)
       .attr("y", yc).attr("height", 22)
-      .style("fill", "#996633" )
+      .style("fill", "#552500" )
+      .style("opacity", 0.7)
       .attr("width", partW);
     svg.append("text").text(timeAvgCaff[i] + " sec")
       .attr("x", partxc+25).attr("y", yc+15)
@@ -165,7 +168,7 @@ p {
     var remaining = 12;
     while(val >= 2){
       var yc = yScaleDays(i)+h+5;
-      makeMug(xc, yc, "#66ccff");
+      makeMug(xc, yc, "#116611");
       xc = xc + 30;
       val = val - 2 ;
       remaining--;
@@ -179,7 +182,8 @@ p {
     var partW = partialScale(val);
     svg.append("rect").attr("x", partxc)
       .attr("y", yc).attr("height", 22)
-      .style("fill", "#66ccff" )
+      .style("fill", "#116611" )
+      .style("opacity", 0.7)
       .attr("width", partW);
     svg.append("text").text(timeAvgPlac[i] + " sec")
       .attr("x", partxc+26).attr("y", yc+15)
@@ -188,13 +192,13 @@ p {
       
   }
 
-  makeMug(30, 60, "#996633");
-  makeMug(170, 60, "#66ccff");
+  makeMug(30, 60, "#552500");
+  makeMug(170, 60, "#116611");
   svg.append("text").text("= Caffeine")
     .attr("x", 60).attr("y", 75);
   svg.append("text").text("= Placebo")
     .attr("x", 200).attr("y", 75);
-  svg.append("text").text("Each mug = 2 seconds")
+  svg.append("text").text("Each mug = 2 lapses")
     .attr("x", 310).attr("y", 75)
     .style("font-style", "italic");
   var padding = 10;
@@ -203,7 +207,7 @@ p {
     .ticks(3);
 
   svg.append("g").attr("transform", "translate(70," + (height - padding) + ")").attr("class", "axis").call(xAxis);
-  svg.append("text").text("Response Time in Seconds")
+  svg.append("text").text("Number of Attention Lapses")
     .attr("x", 150).attr("y", 460)
     .style("font-family", "Trebuchet MS")
     .style("font-size", "16");
