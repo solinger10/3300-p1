@@ -791,6 +791,19 @@ p {
     .attr('stroke-width', strokeWidth)
     .style("opacity", opacity);
 
+  // Axis labels
+  svg.append('text').attr('x', width * 1.5)
+    .attr('y', yScale(0.1) + padding * 0.65)
+    .text('Number of Questions Attempted')
+    .attr('text-anchor', 'middle')
+    .attr('dominant-baseline', 'middle');
+
+  svg.append("text").attr("x", -1 * width / 2)
+      .attr("y", width + padding * 0.35)
+      .text("Accuracy")
+      .attr("text-anchor", "middle")
+      .attr("transform", "rotate(-90)");
+
   </script>
 </div>
 
