@@ -73,7 +73,6 @@ p {
     </header>
 </div>
 <div id="body">
-  <h2>Section 1</h2>
   <h2>Responsiveness & Caffeine Consumption</h2>
   <p>The average response time to a stimulus for a caffeinated and non-caffeinated subject. Each day represents a consecutive day in which the subjects were deprived of sleep.</p>
 <div id="placebo_graph">
@@ -211,8 +210,6 @@ p {
 
   </script>
 </div>
-
-<h2>Section 2</h2>
 
 <h2>Coffee and Quiz Performance</h2>
 
@@ -588,10 +585,94 @@ p {
   var height = 500;
   var width = 500;
   var padding = 60;
-  var legendWidth = 225;
+  var colors = ['#116611', '#4F628E', '#552500'];
+  var sums = [0, 0, 0];
+  var r = 10;
+  var opacity = 0.7;
+  var strokeWidth = 3;
 
-  var svg = d3.select("#plot1").append("svg")
-  .attr("height", height).attr("width", width * 2 + legendWidth);
+
+  // Top Legend
+  var svg = d3.select("#plot1").append("svg").attr("height", 50).attr("width", width * 2);
+
+  var xPos = 75;
+  var yPos = 25;
+  var xStep = 250;
+
+  svg.append("circle")
+    .attr("cx", xPos)
+    .attr("cy", yPos)
+    .attr("r", r)
+    .style("opacity", opacity)
+    .style("fill", colors[0]);  
+
+  svg.append('text').attr('x', xPos + r + 10)
+    .attr('y', yPos)
+    .text('Student (0 cups of coffee)')
+    .attr('dominant-baseline', 'middle')
+    .attr('fill', colors[0]);
+
+  xPos += xStep;
+  svg.append("circle")
+    .attr("cx", xPos)
+    .attr("cy", yPos)
+    .attr("r", r)
+    .style("opacity", opacity)
+    .style("fill", colors[1]);  
+
+  svg.append('text').attr('x', xPos + r + 10)
+    .attr('y', yPos)
+    .text('Student (2 cups of coffee)')
+    .attr('dominant-baseline', 'middle')
+    .attr('fill', colors[1]);
+
+  xPos += xStep;
+  svg.append("circle")
+    .attr("cx", xPos)
+    .attr("cy", yPos)
+    .attr("r", r)
+    .style("opacity", opacity)
+    .style("fill", colors[2]);  
+
+  svg.append('text').attr('x', xPos + r + 10)
+    .attr('y', yPos)
+    .text('Student (4 cups of coffee)')
+    .attr('dominant-baseline', 'middle')
+    .attr('fill', colors[2]);
+
+  xPos += xStep;
+  svg.append("line")
+    .attr("x1", xPos - r)
+    .attr("y1", yPos - 8)
+    .attr("x2", xPos + r)
+    .attr("y2", yPos - 8)
+    .attr("stroke", colors[0])
+    .attr('stroke-width', strokeWidth)
+    .style("opacity", opacity);
+  svg.append("line")
+    .attr("x1", xPos - r)
+    .attr("y1", yPos)
+    .attr("x2", xPos + r)
+    .attr("y2", yPos)
+    .attr("stroke", colors[1])
+    .attr('stroke-width', strokeWidth)
+    .style("opacity", opacity);
+  svg.append("line")
+    .attr("x1", xPos - r)
+    .attr("y1", yPos + 8)
+    .attr("x2", xPos +  r)
+    .attr("y2", yPos + 8)
+    .attr("stroke", colors[2])
+    .attr('stroke-width', strokeWidth)
+    .style("opacity", opacity);
+
+  svg.append('text').attr('x', xPos + 2 * r + 10)
+    .attr('y', yPos)
+    .text('Average lines')
+    .attr('dominant-baseline', 'middle');
+
+// Main svg element with 2 graphs
+  var svg = d3.select("#plot1").append("svg").attr("height", height).attr("width", width * 2);
 
   var xScale = d3.scale.linear().domain([5, 10]).range([padding, width - padding]);
   var yScale = d3.scale.linear().domain([0, 90]).range([height - padding, 10]);
@@ -602,10 +683,6 @@ p {
   svg.append("g").attr("transform", "translate(0," + (height - padding) + ")").attr("class", "axis").call(xAxis);
   svg.append("g").attr("transform", "translate(" + padding + ",0)").attr("class", "axis").call(yAxis);
 
-  var colors = ['#116611', '#4F628E', '#552500'];
-  var sums = [0, 0, 0];
-  var r = 10;
-  var opacity = 0.7;
   for(var i in data) {
     svg.append("circle")
       .attr("cx", xScale(data[i].numprob))
@@ -617,7 +694,6 @@ p {
   }
 
   // Average Lines
-  var strokeWidth = 3;
   svg.append("line")
     .attr("x1", padding)
     .attr("y1", yScale(sums[0] / 20))
@@ -671,10 +747,7 @@ p {
   svg.append("g").attr("transform", "translate(" + (width + padding) + ",0)").attr("class", "axis").call(yAxis);
 
   // Circle data points
-  var colors = ['#116611', '#4F628E', '#552500'];
   var sums = [0, 0, 0];
-  var r = 10;
-  var opacity = 0.7;
   for(var i in data) {
     svg.append("circle")
       .attr("cx", xScale(data[i].numprob))
@@ -713,96 +786,6 @@ p {
     .attr("stroke", colors[2])
     .attr('stroke-width', strokeWidth)
     .style("opacity", opacity);
-
-  // Right-side legend elements
-  var xPos = width + width  + 10;
-  var yPos = 150;
-  var yStep = 50;
-
-  svg.append("circle")
-    .attr("cx", xPos + r)
-    .attr("cy", yPos)
-    .attr("r", r)
-    .style("opacity", opacity)
-    .style("fill", colors[0]);  
-
-  svg.append('text').attr('x', xPos + 2 * r + 10)
-    .attr('y', yPos)
-    .text('Student (0 cups of coffee)')
-    .attr('dominant-baseline', 'middle')
-    .attr('fill', colors[0]);
-
-  yPos += yStep;
-  svg.append("circle")
-    .attr("cx", xPos + r)
-    .attr("cy", yPos)
-    .attr("r", r)
-    .style("opacity", opacity)
-    .style("fill", colors[1]);  
-
-  svg.append('text').attr('x', xPos + 2 * r + 10)
-    .attr('y', yPos)
-    .text('Student (2 cups of coffee)')
-    .attr('dominant-baseline', 'middle')
-    .attr('fill', colors[1]);
-
-  yPos += yStep;
-  svg.append("circle")
-    .attr("cx", xPos + r)
-    .attr("cy", yPos)
-    .attr("r", r)
-    .style("opacity", opacity)
-    .style("fill", colors[2]);  
-
-  svg.append('text').attr('x', xPos + 2 * r + 10)
-    .attr('y', yPos)
-    .text('Student (4 cups of coffee)')
-    .attr('dominant-baseline', 'middle')
-    .attr('fill', colors[2]);
-
-  yPos += yStep;
-  svg.append("line")
-    .attr("x1", xPos)
-    .attr("y1", yPos - 8)
-    .attr("x2", xPos + 2 * r)
-    .attr("y2", yPos - 8)
-    .attr("stroke", colors[0])
-    .attr('stroke-width', strokeWidth)
-    .style("opacity", opacity);
-  svg.append("line")
-    .attr("x1", xPos)
-    .attr("y1", yPos)
-    .attr("x2", xPos + 2 * r)
-    .attr("y2", yPos)
-    .attr("stroke", colors[1])
-    .attr('stroke-width', strokeWidth)
-    .style("opacity", opacity);
-  svg.append("line")
-    .attr("x1", xPos)
-    .attr("y1", yPos + 8)
-    .attr("x2", xPos + 2 * r)
-    .attr("y2", yPos + 8)
-    .attr("stroke", colors[2])
-    .attr('stroke-width', strokeWidth)
-    .style("opacity", opacity);
-
-  svg.append('text').attr('x', xPos + 2 * r + 10)
-    .attr('y', yPos)
-    .text('Average lines')
-    .attr('dominant-baseline', 'middle');
-
-  // Axis labels
-  svg.append('text').attr('x', width / 2 + width )
-    .attr('y', yScale(0.1) + padding * 0.65)
-    .text('Number of Questions Attempted')
-    .attr('text-anchor', 'middle')
-    .attr('dominant-baseline', 'middle');
-
-  svg.append("text").attr("x", -1 * width / 2)
-      .attr("y", padding * 0.35 + width )
-      .text("Accuracy")
-      .attr("text-anchor", "middle")
-      .attr("transform", "rotate(-90)");
 
   </script>
 </div>
