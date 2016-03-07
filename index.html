@@ -6,29 +6,35 @@
 <script src="http://d3js.org/d3.v3.min.js"></script>
 <script src="RadarChart.js"></script>
 <style>
-body { font-family: "Open Sans"; font-size: 14; text-align: center; margin-top: 150;}
+body { 
+  font-family: "Open Sans"; 
+  font-size: 14; 
+  text-align: center; 
+  margin-top: 150;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1000}
 svg { margin: 10px; background-color: #fff; }
 .axis path { fill: none; stroke: black;}
 .axis line { stroke: black; }
-#plot1 p {
-  font-size: 16px;
-}
 #chart2 {
-      position: relative;
-      top: 50px;
-      left: 300px;
-    } 
-    p{
-      margin-left: 0px;
-      font-size: 30px;
-    }
-    p1{
-      margin-top: 40px;
-      margin-left: 675px;
-    }
-    p2{
-      margin-left: 675px;
-    }
+  position: relative;
+  top: 50px;
+  left: 300px;
+} 
+h2 {font-size: 26px;}
+p{
+  margin-left: 0px;
+  font-size: 18px;
+  margin: 10px 0 15px 0;
+}
+p1{
+  margin-top: 40px;
+  margin-left: 675px;
+}
+p2{
+  margin-left: 675px;
+}
 #header_wrap {
   background: #212121;
   background: -moz-linear-gradient(top, #373737, #212121);
@@ -58,9 +64,6 @@ svg { margin: 10px; background-color: #fff; }
   font-weight: 300;
   background: none;
   text-shadow: #111 0px 0px 10px;
-}
-p {
-  margin: 10px 0 15px 0;
 }
 </style>
 </head>
@@ -675,7 +678,7 @@ p {
     .text('Average lines')
     .attr('dominant-baseline', 'middle');
 
-// Main svg element with 2 graphs
+  // Main svg element with 2 graphs
   var svg = d3.select("#plot1").append("svg").attr("height", height).attr("width", width * 2);
 
   var xScale = d3.scale.linear().domain([5, 10]).range([padding, width - padding]);
