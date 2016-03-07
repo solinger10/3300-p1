@@ -84,14 +84,18 @@ p2{
   d3.select("#placebo_graph").append("svg").attr("width", 500).attr("height", 500).attr("id", "svg");
     
   var svg = d3.select("#svg");
+  //background square for graph
   svg.append("rect").attr("x", "65").attr("y","110")
     .style("fill", "#e1e1d0")
     .attr("width", "420").attr("height", "290");
+
   var xScaleTime = d3.scale.linear().domain([0, 24]).range([0, 350]);
   var yScaleDays = d3.scale.linear().domain([0, 4]).range([350, 50]);
+  //scale for partially filled mugs
   var partialScale = d3.scale.linear().domain([0, 2]).range([0, 17]);
 
   var daysTemp = ["Day 4 ", "Day 3", "Day 2" , "Day 1"];
+  //creating text labels for each day
   for(var i = 0 ; i < daysTemp.length; i ++){
     svg.append("text").text(daysTemp[i])
     .attr("x", 5)
@@ -104,12 +108,14 @@ p2{
       .style("font-size", 40);
   }
   var h = 20;
-  svg.append("rect").style("fill", "black").attr("width", "20");
+
   var timeAvgCaff = [17.90, 14.73, 6.47, 6.50];
 
   var timeAvgPlac = [22.07, 19.92, 15.11, 7.62];
 
   var w = 17;
+  //function to create a mug element at the specified coordinate
+  //with a specified color
   function makeMug(xcoor, ycoor, color){
     svg.append("rect")
       .attr("height", h+1)
@@ -136,7 +142,7 @@ p2{
       .style("opacity", 0.7)
       .attr("transform", "translate(" + hxcoor + "," + hycoor + ")");
   }
-
+  //create mugs for caffeine data
   for(var i = 0 ; i < timeAvgCaff.length; i ++){
     var val = timeAvgCaff[i];
     var xc = 70;
@@ -165,6 +171,7 @@ p2{
       .style("font-size", 13)
       .style("font-family", "Trebuchet MS");
   }
+  //create mugs on graph for placebo data
   for(var i = 0 ; i < timeAvgPlac.length; i ++){
     var val = timeAvgPlac[i];
     var xc = 70;
@@ -194,7 +201,7 @@ p2{
       .style("font-family", "Trebuchet MS");
       
   }
-
+  //create the key
   makeMug(30, 60, "#552500");
   makeMug(170, 60, "#116611");
   svg.append("text").text("= Caffeine")
@@ -206,6 +213,7 @@ p2{
     .style("font-style", "italic");
   var padding = 10;
   var height = 420;
+  //create the bottom axis for # of attention lapses
   var xAxis = d3.svg.axis().scale(xScaleTime).orient("bottom")
     .ticks(3);
 
