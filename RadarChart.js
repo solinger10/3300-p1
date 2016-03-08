@@ -73,10 +73,10 @@ var RadarChart1 = {
 	   .enter()
 	   .append("svg:text")
 	   .attr("x", function(d){return levelFactor*(1-cfg.factor*Math.sin(0));})
-	   .attr("y", function(d){return levelFactor*(1-cfg.factor*Math.cos(0));})
+	   .attr("y", function(d){return levelFactor*(1-cfg.factor*Math.cos(0))+47;})
 	   .attr("class", "legend")
 	   .style("font-family", "sans-serif")
-	   .style("font-size", "10px")
+	   .style("font-size", "15px")
 	   .attr("transform", "translate(" + (cfg.w/2-levelFactor + cfg.ToRight) + ", " + (cfg.h/2-levelFactor) + ")")
 	   .attr("fill", "#737373")
 	   .text(Format(j*cfg.maxValue/cfg.levels) + 'cup(s)');
@@ -97,13 +97,13 @@ var RadarChart1 = {
 		.attr("y2", function(d, i){return cfg.h/2*(1-cfg.factor*Math.cos(i*cfg.radians/total));})
 		.attr("class", "line")
 		.style("stroke", "grey")
-		.style("stroke-width", "1px");
+		.style("stroke-width", "3px");
 
 	axis.append("text")
 		.attr("class", "legend")
 		.text(function(d){return d})
 		.style("font-family", "sans-serif")
-		.style("font-size", "11px")
+		.style("font-size", "15px")
 		.attr("text-anchor", "middle")
 		.attr("dy", "1.5em")
 		.attr("transform", function(d, i){return "translate(0, -10)"})
