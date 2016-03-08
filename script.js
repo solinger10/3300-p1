@@ -51,7 +51,7 @@ var text = svg.append("text")
 	.attr("class", "title")
 	.attr('transform', 'translate(90,0)') 
 	.attr("x", w - 70)
-	.attr("y", 10)
+	.attr("y", 50)
 	.attr("font-size", "12px")
 	.attr("fill", "#404040");
 	
