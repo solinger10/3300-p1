@@ -28,7 +28,6 @@ p{
   margin-left: 0px;
   font-size: 18px;
   margin: 10px 0 15px 0;
-  font-size: 26px;
 }
 p1{
   font-family: "Open Sans"; 
@@ -232,7 +231,7 @@ p2{
 
 <h2>Coffee and Quiz Performance</h2>
 
-<div id="plot1">
+<div id="quizPerformance">
   <p>
     3 groups of 20 students drank either 0, 2, or 4 cups of coffee and then took a 10-problem statistics quiz.
   </p>
@@ -612,7 +611,7 @@ p2{
 
 
   // Top Legend
-  var svg = d3.select("#plot1").append("svg").attr("height", 50).attr("width", width * 2);
+  var svg = d3.select("#quizPerformance").append("svg").attr("height", 50).attr("width", width * 2);
 
   var xPos = 75;
   var yPos = 25;
@@ -691,7 +690,7 @@ p2{
     .attr('dominant-baseline', 'middle');
 
   // Main svg element with 2 graphs
-  var svg = d3.select("#plot1").append("svg").attr("height", height).attr("width", width * 2);
+  var svg = d3.select("#quizPerformance").append("svg").attr("height", height).attr("width", width * 2);
 
   var xScale = d3.scale.linear().domain([5, 10]).range([padding, width - padding]);
   var yScale = d3.scale.linear().domain([0, 90]).range([height - padding, 10]);
@@ -823,9 +822,9 @@ p2{
 </div>
 
 <div id="chart2">
-      <h2>Relationship among cups of coffee consumed per day, GPA and classes</h2>
+      <h2>Daily Coffee Consumption, GPA, and Class Year</h2>
       <p>Each Axis:GPA &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Each Level of the Scale: Cups of coffee consumed per day</p>
-      <p>e.g. The green dot on the left represents a junior who has a GPA of 1 but consumes 9 cups of coffee per day.</p>
+      <p>e.g. The green dot on the left represents a junior who has a GPA of 1 and consumes 9 cups of coffee per day.</p>
           
 </div>
 </div>
